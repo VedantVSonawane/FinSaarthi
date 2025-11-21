@@ -1,0 +1,179 @@
+.page {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: var(--neutral-50);
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--neutral-900);
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    text-align: center;
+    color: var(--neutral-600);
+    margin-bottom: 40px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 12px 24px;
+    border-radius: 100px;
+    background: white;
+    border: 1px solid var(--neutral-200);
+    color: var(--neutral-600);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    background: var(--neutral-100);
+}
+
+.activeTab {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.activeTab:hover {
+    background: var(--primary);
+}
+
+.calculatorCard {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-md);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.calculatorGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.inputs h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--neutral-900);
+}
+
+.inputGroup {
+    margin-bottom: 24px;
+}
+
+.inputGroup label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: var(--neutral-700);
+}
+
+.inputGroup input[type="range"] {
+    width: 100%;
+    margin-bottom: 12px;
+    accent-color: var(--primary);
+}
+
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    background: var(--neutral-50);
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.resultCard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--neutral-200);
+}
+
+.resultCard:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.resultCard span {
+    color: var(--neutral-600);
+    font-weight: 500;
+}
+
+.resultCard strong {
+    font-size: 1.25rem;
+    color: var(--neutral-900);
+}
+
+.totalCard strong {
+    font-size: 1.75rem;
+    color: var(--primary);
+}
+
+.success {
+    color: var(--success) !important;
+}
+
+.danger {
+    color: var(--error) !important;
+}
+
+.regimeToggle {
+    display: flex;
+    background: var(--neutral-100);
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.regimeToggle button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    font-weight: 600;
+    color: var(--neutral-600);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.activeRegime {
+    background: white !important;
+    color: var(--primary) !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.note {
+    font-size: 0.85rem;
+    color: var(--neutral-500);
+    margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+    .calculatorGrid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .calculatorCard {
+        padding: 24px;
+    }
+}

@@ -1,0 +1,239 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User Model
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  phone     String?  @unique
+  password  String
+  language  String   @default("en") // 'en' or 'hi'
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // User Profile
+  age           Int?
+  monthlyIncome Int?
+  occupation    String?
+  location      String?
+
+  // Relationships
+  goals              Goal[]
+  expenses           Expense[]
+  chatMessages       ChatMessage[]
+  preferences        UserPreferences?
+  schemeApplications SchemeApplication[]
+  learningProgress   LearningProgress[]
+
+  @@map("users")
+}
+
+// User Preferences
+model UserPreferences {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  notifications      Boolean @default(true)
+  emailNotifications Boolean @default(true)
+  pushNotifications  Boolean @default(true)
+  darkMode           Boolean @default(false)
+  currency           String  @default("INR")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("user_preferences")
+}
+
+// Financial Goals
+model Goal {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  name         String
+  targetAmount Int
+  savedAmount  Int       @default(0)
+  icon         String    @default("🎯")
+  color        String    @default("#1A5F7A")
+  deadline     DateTime?
+  category     String? // 'bike', 'house', 'emergency', 'education', etc.
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("goals")
+}
+
+// Expenses
+model Expense {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  amount      Int
+  category    String // 'food', 'transport', 'shopping', 'bills', etc.
+  description String?
+  icon        String   @default("💸")
+  date        DateTime @default(now())
+  isRecurring Boolean  @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([date])
+  @@map("expenses")
+}
+
+// Government Schemes
+model Scheme {
+  id               String  @id @default(cuid())
+  title            String
+  titleHindi       String?
+  description      String
+  descriptionHindi String?
+
+  category    String // 'farmers', 'women', 'students', 'business', 'health', etc.
+  benefits    String[] // Array of benefit strings
+  eligibility Json // Complex eligibility criteria as JSON
+  documents   String[] // Required documents
+
+  department String
+  website    String?
+  deadline   DateTime?
+  isActive   Boolean   @default(true)
+
+  // Metadata
+  views        Int                 @default(0)
+  applications SchemeApplication[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([category])
+  @@map("schemes")
+}
+
+// Scheme Applications
+model SchemeApplication {
+  id       String @id @default(cuid())
+  userId   String
+  user     User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  schemeId String
+  scheme   Scheme @relation(fields: [schemeId], references: [id])
+
+  status    String  @default("pending") // 'pending', 'submitted', 'approved', 'rejected'
+  documents Json? // Uploaded document URLs
+  notes     String?
+
+  appliedAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([userId, schemeId])
+  @@index([userId])
+  @@index([schemeId])
+  @@map("scheme_applications")
+}
+
+// Chat Messages
+model ChatMessage {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  role     String // 'user' or 'assistant'
+  content  String @db.Text
+  type     String @default("text") // 'text', 'visual', 'action'
+  metadata Json? // For visual data, action cards, etc.
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("chat_messages")
+}
+
+// Learning Content
+model LearningContent {
+  id               String  @id @default(cuid())
+  title            String
+  titleHindi       String?
+  description      String
+  descriptionHindi String?
+
+  type         String // 'article', 'video', 'quiz'
+  content      String  @db.Text
+  contentHindi String? @db.Text
+  category     String // 'basics', 'investing', 'tax', 'schemes', etc.
+  difficulty   String  @default("beginner") // 'beginner', 'intermediate', 'advanced'
+
+  duration     Int? // in minutes
+  videoUrl     String?
+  thumbnailUrl String?
+
+  points Int @default(10) // Gamification points
+
+  // Relationships
+  progress LearningProgress[]
+
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([type])
+  @@map("learning_content")
+}
+
+// Learning Progress
+model LearningProgress {
+  id        String          @id @default(cuid())
+  userId    String
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contentId String
+  content   LearningContent @relation(fields: [contentId], references: [id])
+
+  completed Boolean @default(false)
+  progress  Int     @default(0) // 0-100%
+  score     Int? // For quizzes
+  timeSpent Int     @default(0) // in seconds
+
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([userId, contentId])
+  @@index([userId])
+  @@map("learning_progress")
+}
+
+// Notifications
+model Notification {
+  id     String @id @default(cuid())
+  userId String
+
+  type    String // 'scheme_deadline', 'goal_milestone', 'new_feature', etc.
+  title   String
+  message String
+  link    String?
+
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([createdAt])
+  @@map("notifications")
+}

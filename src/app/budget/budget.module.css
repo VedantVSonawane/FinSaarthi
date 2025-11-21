@@ -1,0 +1,341 @@
+/* Budget Page Styles */
+
+.page {
+    min-height: 100vh;
+    background: var(--neutral-50);
+}
+
+.header {
+    background: var(--primary);
+    color: white;
+    padding: var(--space-5) 0 0;
+    border-bottom-left-radius: var(--radius-2xl);
+    border-bottom-right-radius: var(--radius-2xl);
+}
+
+.headerTop {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.backBtn {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.balanceCard {
+    text-align: center;
+}
+
+.balanceCard span {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.balanceCard h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: var(--space-1);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-6);
+    padding-bottom: var(--space-1);
+}
+
+.tab {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1rem;
+    font-weight: 600;
+    padding-bottom: var(--space-3);
+    cursor: pointer;
+    position: relative;
+    transition: color var(--transition);
+}
+
+.activeTab {
+    color: white;
+}
+
+.activeTab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--accent);
+    border-radius: var(--radius-full) var(--radius-full) 0 0;
+}
+
+/* Goals Section */
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-5);
+}
+
+.sectionHeader h3 {
+    font-size: 1.25rem;
+    color: var(--neutral-800);
+}
+
+.addBtn {
+    background: var(--primary-100);
+    color: var(--primary);
+    border: none;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background var(--transition);
+}
+
+.addBtn:hover {
+    background: var(--primary-200);
+}
+
+.goalsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+}
+
+.goalCard {
+    background: white;
+    padding: var(--space-5);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    border-top: 4px solid var(--primary);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.goalIcon {
+    font-size: 2rem;
+    background: var(--neutral-50);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.goalInfo h4 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-1);
+}
+
+.goalAmount {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--neutral-900);
+}
+
+.target {
+    color: var(--neutral-500);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.progressBar {
+    height: 8px;
+    background: var(--neutral-100);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 1s ease-out;
+}
+
+.topUpBtn {
+    width: 100%;
+    padding: var(--space-2);
+    border: 1px solid var(--neutral-200);
+    background: white;
+    border-radius: var(--radius-lg);
+    color: var(--neutral-700);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.topUpBtn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Expenses Section */
+.expenseList {
+    background: white;
+    border-radius: var(--radius-xl);
+    padding: var(--space-2);
+    box-shadow: var(--shadow-sm);
+}
+
+.expenseItem {
+    display: flex;
+    align-items: center;
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.expenseItem:last-child {
+    border-bottom: none;
+}
+
+.expenseIcon {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    background: var(--neutral-50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--space-4);
+}
+
+.expenseInfo {
+    flex: 1;
+}
+
+.expenseInfo h4 {
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+.expenseInfo span {
+    font-size: 0.85rem;
+    color: var(--neutral-500);
+}
+
+.expenseAmount {
+    font-weight: 600;
+    color: var(--error);
+}
+
+/* Modal */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--space-4);
+}
+
+.modal {
+    background: white;
+    padding: var(--space-6);
+    border-radius: var(--radius-2xl);
+    width: 100%;
+    max-width: 400px;
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modal h3 {
+    margin-bottom: var(--space-6);
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+.inputGroup {
+    margin-bottom: var(--space-5);
+}
+
+.inputGroup label {
+    display: block;
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+    color: var(--neutral-700);
+}
+
+.inputGroup input[type="text"] {
+    width: 100%;
+    padding: var(--space-3);
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-lg);
+    font-size: 1rem;
+}
+
+.rangeSlider {
+    width: 100%;
+    height: 6px;
+    background: var(--neutral-200);
+    border-radius: var(--radius-full);
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.rangeSlider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: var(--primary);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+}
+
+.modalActions {
+    display: flex;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.cancelBtn {
+    flex: 1;
+    padding: var(--space-3);
+    background: var(--neutral-100);
+    border: none;
+    border-radius: var(--radius-lg);
+    color: var(--neutral-700);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.saveBtn {
+    flex: 1;
+    padding: var(--space-3);
+    background: var(--primary);
+    border: none;
+    border-radius: var(--radius-lg);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

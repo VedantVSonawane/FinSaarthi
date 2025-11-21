@@ -1,0 +1,82 @@
+.page {
+    min-height: 100vh;
+    background: white;
+}
+
+.nav {
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--neutral-100);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.backLink {
+    color: var(--neutral-600);
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: var(--space-10);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+    color: var(--neutral-900);
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--neutral-600);
+    line-height: 1.6;
+}
+
+.section {
+    margin-bottom: var(--space-10);
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-6);
+    color: var(--neutral-900);
+}
+
+.section p {
+    font-size: 1.1rem;
+    color: var(--neutral-700);
+    margin-bottom: var(--space-4);
+    line-height: 1.8;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+}
+
+.card {
+    padding: var(--space-6);
+    background: var(--neutral-50);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--neutral-100);
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+    color: var(--primary);
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 0;
+}

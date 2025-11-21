@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-8) var(--space-4);
+    text-align: center;
+    background: white;
+    border-radius: var(--radius-xl);
+    border: 1px dashed var(--neutral-300);
+}
+
+.icon {
+    font-size: 3rem;
+    margin-bottom: var(--space-4);
+    opacity: 0.8;
+}
+
+.title {
+    font-size: 1.25rem;
+    color: var(--neutral-900);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
+}
+
+.description {
+    color: var(--neutral-600);
+    margin-bottom: var(--space-6);
+    max-width: 300px;
+    line-height: 1.5;
+}
+
+.button {
+    display: inline-block;
+    padding: var(--space-2) var(--space-5);
+    background: var(--primary-50);
+    color: var(--primary);
+    border: 1px solid var(--primary-200);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.button:hover {
+    background: var(--primary-100);
+    transform: translateY(-2px);
+}
