@@ -92,7 +92,7 @@ export default function DashboardPage() {
                 <div className={styles.headerContent}>
                     <div>
                         <h1 className={styles.greeting}>Welcome back, {userName}! 👋</h1>
-                        <p className={styles.subtitle}>Here's your financial overview</p>
+                        <p className={styles.subtitle}>Here&apos;s your financial overview</p>
                     </div>
                     <Link href="/auth/login" className={styles.logoutBtn}>
                         Logout

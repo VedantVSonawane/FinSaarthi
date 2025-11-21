@@ -35,7 +35,7 @@ export default function LandingPage() {
             <main className={styles.main}>
                 <div className={styles.heroContainer}>
                     <div className={styles.heroContent}>
-                        <span className={styles.badge}>🇮🇳 Bharat's Financial Companion</span>
+                        <span className={styles.badge}>🇮🇳 Bharat&apos;s Financial Companion</span>
                         <h1 className={styles.title}>
                             Master Your Money <br />
                             <span className={styles.gradientText}>In Your Language</span>

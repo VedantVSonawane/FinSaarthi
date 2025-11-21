@@ -113,12 +113,13 @@ export default function LoginPage() {
                         </div>
 
                         <button className={styles.googleBtn} type="button">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" />
                             Google
                         </button>
 
                         <p className={styles.footer}>
-                            Don't have an account? <Link href="/auth/signup">Sign up</Link>
+                            Don&apos;t have an account? <Link href="/auth/signup">Sign up</Link>
                         </p>
                     </div>
                 </div>

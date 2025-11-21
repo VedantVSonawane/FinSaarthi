@@ -25,7 +25,7 @@ export default function AboutPage() {
                         <p>
                             FinSaarthi was born from a simple observation: while financial products are exploding in India,
                             financial literacy remains low, especially in Tier 2 and Tier 3 cities. Millions of Indians miss out
-                            on government benefits simply because they don't know they exist or how to apply.
+                            on government benefits simply because they don&apos;t know they exist or how to apply.
                         </p>
                         <p>
                             We built FinSaarthi to bridge this gap using the power of AI and vernacular languages.
